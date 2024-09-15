@@ -8,7 +8,7 @@ var app = require('../app');
 var debug = require('debug')('project:server');
 var http = require('http');
 let mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost:27017/tea')
+mongoose.connect('mongodb+srv://vaghasiyavivek2023katargam:vivek%400133@cluster0.48fuj.mongodb.net/')
 .then((res)=>{
   console.log('Connected...');
   
