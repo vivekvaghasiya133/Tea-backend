@@ -16,7 +16,7 @@ exports.getAllTeaOrders = async (req, res) => {
   try {
     const teaOrders = await TeaOrder.find()
       .populate('ShopName')
-      .populate('Area');
+      .populate('area');
       
     res.status(200).json(teaOrders);
   } catch (error) {
@@ -28,7 +28,7 @@ exports.getAllTeaOrders = async (req, res) => {
 // Get a tea order by ID
 exports.getTeaOrderById = async (req, res) => {
   try {
-    const teaOrder = await TeaOrder.findById(req.params.id).populate('ShopName');
+    const teaOrder = await TeaOrder.findById(req.params.id).populate('ShopName').populate('area');
     if (!teaOrder) {
       return res.status(404).json({ error: 'Tea order not found' });
     }
