@@ -44,6 +44,9 @@ router.get('/tea-orders', teaOrderController.getAllTeaOrders);
 // Route to get a tea order by ID
 router.get('/tea-orders/:id', teaOrderController.getTeaOrderById);
 
+
+router.get('/ordercount', teaOrderController.CountTeaOrders);
+
 // Route to update a tea order by ID
 router.put('/tea-orders/:id', teaOrderController.updateTeaOrder);
 

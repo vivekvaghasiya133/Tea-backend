@@ -16,7 +16,7 @@ exports.getAllTeaOrders = async (req, res) => {
   try {
     const teaOrders = await TeaOrder.find()
       .populate('ShopName')
-      .populate('area');
+      ;
       
     res.status(200).json(teaOrders);
   } catch (error) {
@@ -25,10 +25,19 @@ exports.getAllTeaOrders = async (req, res) => {
 };
 
 
+exports.CountTeaOrders = async (req, res) => {
+  try {
+    const orderCount = await TeaOrder.countDocuments();
+    res.status(200).json({ count: orderCount });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 // Get a tea order by ID
 exports.getTeaOrderById = async (req, res) => {
   try {
-    const teaOrder = await TeaOrder.findById(req.params.id).populate('ShopName').populate('area');
+    const teaOrder = await TeaOrder.findById(req.params.id).populate('ShopName');
     if (!teaOrder) {
       return res.status(404).json({ error: 'Tea order not found' });
     }
