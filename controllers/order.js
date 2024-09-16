@@ -14,12 +14,16 @@ exports.createTeaOrder = async (req, res) => {
 // Get all tea orders
 exports.getAllTeaOrders = async (req, res) => {
   try {
-    const teaOrders = await TeaOrder.find().populate('ShopName');
+    const teaOrders = await TeaOrder.find()
+      .populate('ShopName')
+      .populate('Area');
+      
     res.status(200).json(teaOrders);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
+
 
 // Get a tea order by ID
 exports.getTeaOrderById = async (req, res) => {
