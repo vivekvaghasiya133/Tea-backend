@@ -62,6 +62,20 @@ exports.updateTeaOrder = async (req, res) => {
   }
 };
 
+// Update tea order status by ID
+exports.updateTeaOrderStatus = async (req, res) => {
+  try {
+    const { status } = req.body;
+    const teaOrder = await TeaOrder.findByIdAndUpdate(req.params.id, { orderStatus: status }, { new: true });
+    if (!teaOrder) {
+      return res.status(404).json({ error: 'Tea order not found' });
+    }
+    res.status(200).json(teaOrder);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 // Delete a tea order by ID
 exports.deleteTeaOrder = async (req, res) => {
   try {

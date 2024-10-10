@@ -65,6 +65,11 @@ const teaOrderSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  orderStatus: {
+    type: String,
+    enum: ['pending', 'Delivered', 'Canceled'],
+    default: 'pending',
+  },
 });
 
 // Method to calculate total price and total savings
