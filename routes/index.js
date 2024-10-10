@@ -53,7 +53,7 @@ router.put('/tea-orders/:id', teaOrderController.updateTeaOrder);
 // Route to delete a tea order by ID
 router.delete('/tea-orders/:id', teaOrderController.deleteTeaOrder);
 
-router.delete("/tea-status/:id", teaOrderController.updateTeaOrderStatus);
+router.patch("/tea-status/:id", teaOrderController.updateTeaOrderStatus);
 
 
 
